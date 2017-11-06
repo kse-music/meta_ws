@@ -51,8 +51,6 @@
  
 ### 五、使用步骤
 1. 与CVS断开连接，修改项目名称
-- 【**必须**】右键meta_ws,依次选择Team  -> Disconnect...   -> Also Delete the CVS meta infomation from the file system  -> Yes
-- 【**必须**】右键meta_ws,依次选择Refactor  -> Rename... -> OK
 
 2. 修改meta_ws.properties及com.hiekn.meta.app.App.java中相关配置项
 - 【**必须**】base.package=com.hiekn.meta：Jersey与Swagger的扫描注解的基础路径
