@@ -50,7 +50,7 @@
 6. 其它还有事务、aop等配置，全是基于注解的方式，使得开发变得更加快速高效
  
 ### 五、使用步骤
-1. 与CVS断开连接，修改项目名称
+1. 与 GIT断开连接，修改项目名称
 
 2. 修改meta_ws.properties及com.hiekn.meta.app.App.java中相关配置项
 - 【**必须**】base.package=com.hiekn.meta：Jersey与Swagger的扫描注解的基础路径
