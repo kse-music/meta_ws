@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hiekn.meta.dao.UserMapper">
+
+	<insert id="insert" parameterType="com.hiekn.meta.bean.UserBean" keyProperty="id" useGeneratedKeys="true">
+		insert into my_task_history (
+		username, password, addTime
+		)
+		values (
+		#{username,jdbcType=VARCHAR},
+		#{password,jdbcType=VARCHAR},
+		#{addTime,jdbcType=TIMESTAMP}
+		)
+	</insert>
+
+	<delete id="delete" parameterType="int">
+		delete from tb_user where id = #{id}
+	</delete>
+	
+	<update id="update" parameterType="com.hiekn.meta.bean.UserBean">
+		update tb_user
+		<set>
+			<if test="password != null and password != '' ">
+				password = #{password,jdbcType=VARCHAR},
+			</if>
+			<if test="lastModifyTime != null">
+				lastModifyTime = #{lastModifyTime,jdbcType=TIMESTAMP},
+			</if>
+
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+
+	<select id="selectByUsername" parameterType="java.lang.String"	resultType="com.hiekn.meta.bean.UserBean">
+		select username,password from tb_user where username =	#{username,jdbcType=VARCHAR}
+	</select>
+	
+	<select id="listByPage" resultType="com.hiekn.meta.bean.UserBean">
+		select * from tb_user order by addTime DESC	limit #{pageNo},#{pageSize}
+	</select>
+	
+	<select id="findByIds" resultType="com.hiekn.meta.bean.UserBean">  
+		 select * from tb_user where id in  
+		 <foreach item="item" index="index" collection="list" open="(" separator="," close=")">  
+		  #{item}  
+		 </foreach>  
+	</select>  
+
+</mapper>
