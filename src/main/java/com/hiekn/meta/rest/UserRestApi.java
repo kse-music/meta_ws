@@ -24,18 +24,14 @@ public class UserRestApi {
     @Path("/listByPage")
     @ApiOperation("分页用户列表")
     public RestResp<UserBean> listByPage(@BeanParam BaseParam baseParam,
-                                         @ApiParam(value = "当前页") @DefaultValue("1") @FormParam("pageNo") Integer pageNo,
-                                         @ApiParam(value = "每页数") @DefaultValue("10") @FormParam("pageSize") Integer pageSize) {
+                                         @ApiParam("当前页，默认1") @DefaultValue("1") @FormParam("pageNo") Integer pageNo,
+                                         @ApiParam("每页数，默认10") @DefaultValue("10") @FormParam("pageSize") Integer pageSize) {
         return new RestResp<>(userService.listByPage(pageNo, pageSize), baseParam.getTt());
     }
 
     @POST
     @Path("/login")
     @ApiOperation("用户登录")
-    @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "成功", response = RestResp.class),
-            @ApiResponse(code = 500, message = "失败")
-    })
     public RestResp<UserBean> login(@BeanParam BaseParam baseParam,
                                     @ApiParam(value = "用户名/邮箱", required = true) @FormParam("username") String username,
                                     @ApiParam(value = "密码", required = true) @FormParam("password") String password) {
