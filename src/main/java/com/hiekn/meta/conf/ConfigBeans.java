@@ -1,4 +1,4 @@
-package com.hiekn.meta.config;
+package com.hiekn.meta.conf;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;

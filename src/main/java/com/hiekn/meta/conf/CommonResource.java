@@ -1,4 +1,4 @@
-package com.hiekn.meta.config;
+package com.hiekn.meta.conf;
 
 import java.util.Properties;
 

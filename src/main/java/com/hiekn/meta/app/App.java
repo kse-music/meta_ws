@@ -6,7 +6,7 @@ import org.codehaus.jackson.jaxrs.JacksonJsonProvider;
 import org.glassfish.jersey.media.multipart.MultiPartFeature;
 import org.glassfish.jersey.server.ResourceConfig;
 
-import com.hiekn.meta.config.CommonResource;
+import com.hiekn.meta.conf.CommonResource;
 
 import io.swagger.jaxrs.config.BeanConfig;
 import io.swagger.jaxrs.listing.ApiListingResource;
