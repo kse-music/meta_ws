@@ -45,8 +45,7 @@
         </root>
 
         <!-- 设置第三方日志系统级别 -->
-        <logger name="org.springframework" level="ERROR"/>
-        <logger name="org.elasticsearch.plugins" level="ERROR"/>
+        <logger name="org" level="WARN"/>
 
     </Loggers>
 
