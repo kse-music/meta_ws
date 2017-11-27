@@ -1,4 +1,4 @@
-package com.hiekn.meta.bean.result;
+package com.hiekn.meta.bean.vo;
 
 import io.swagger.annotations.ApiParam;
 

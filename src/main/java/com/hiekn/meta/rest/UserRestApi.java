@@ -1,7 +1,7 @@
 package com.hiekn.meta.rest;
 
 import com.hiekn.meta.bean.UserBean;
-import com.hiekn.meta.bean.result.BaseParam;
+import com.hiekn.meta.bean.vo.BaseParam;
 import com.hiekn.meta.bean.result.RestResp;
 import com.hiekn.meta.service.UserService;
 import com.hiekn.meta.util.JsonUtils;
