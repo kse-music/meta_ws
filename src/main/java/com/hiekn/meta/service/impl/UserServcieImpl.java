@@ -28,7 +28,7 @@ public class UserServcieImpl implements UserService{
 	public UserBean login(String username, String password) {
 		UserBean userBean = getByUsername(username);
 		if(Objects.isNull(userBean)){
-			throw ServiceException.newInstance(ErrorCode.USER_ERROR);
+			throw ServiceException.newInstance(ErrorCode.USER_NOT_FOUND_ERROR);
 		}
 		return userBean;
 	}
@@ -44,7 +44,7 @@ public class UserServcieImpl implements UserService{
 		pageNo = (pageNo - 1) * pageSize;
 		List<UserBean> list = userMapper.listByPage(pageNo, pageSize);
 		Integer count = 33;
-		RestData<UserBean> rsData = new RestData<UserBean>(list, count);
+		RestData<UserBean> rsData = new RestData<>(list, count);
 		return rsData;
 	}
 

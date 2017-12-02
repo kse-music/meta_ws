@@ -11,7 +11,7 @@ public class RestException extends BaseException{
 	}
 
 	public static RestException newInstance(){
-		return newInstance(ErrorCode.PARAM_ERROR);
+		return newInstance(ErrorCode.PARAM_PARSE_ERROR);
 	}
 	
 	public static RestException newInstance(ErrorCode code){

@@ -11,7 +11,7 @@ public class JsonException extends BaseException{
 	}
 
 	public static JsonException newInstance(){
-		return newInstance(ErrorCode.JSON_ERROR);
+		return newInstance(ErrorCode.JSON_PARSE_ERROR);
 	}
 	
 	public static JsonException newInstance(ErrorCode code){

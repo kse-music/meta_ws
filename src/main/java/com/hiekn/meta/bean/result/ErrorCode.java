@@ -4,20 +4,25 @@ import java.util.Objects;
 
 public enum ErrorCode {
 
-	PARAM_ERROR(30001,"参数解析错误"),
-	EXIGST_ERROR(30002,"重复添加"),
-	USER_ERROR(30003,"用户不存在"),
-	PWD_ERROR(30004,"密码错误"),
-	GET_CODE_ERROR(30005,"获取短信验证码失败"),
-	MCODE_ERROR(30006,"短信验证码错误"),
-	JSON_ERROR(40001,"JSON转换失败"),
-	VERIFY_ERROR(50001,"验证失败"),
-	USER_RIGHT_ERROR(60001,"权限不足"),
-	NOT_ENOUGH(70001,"剩余使用次数不足，请充值"),
-	HTTP_ERROR(80001,"HTTP相关错误"),
-	SERVICE_ERROR(90000,"服务端内部错误"),
-	REMOTE_SERVICE_PARSE_ERROR(90001,"远程数据解析错误"),
-	REMOTE_SERVICE_ERROR(90002,"远程服务错误");
+    //3xxxx:通用错误码定义
+    //5xxxx:业务相关错误码定义
+    //7xxxx:未知错误码
+    //8xxxx:Http相关错误码定义
+    //9xxxx:统一错误码及第三方服务错误码定义
+
+    PARAM_PARSE_ERROR(30001,"参数解析错误"),
+    JSON_PARSE_ERROR(30002,"JSON转换失败"),
+    EXISTED_ERROR(50001,"重复添加"),
+    USER_NOT_FOUND_ERROR(50002,"用户不存在"),
+    PWD_ERROR(50003,"密码错误"),
+    GET_CODE_ERROR(50004,"获取短信验证码失败"),
+    VERIFY_MOBILE_CODE_ERROR(50005,"短信验证码错误"),
+    VERIFY_CODE_ERROR(50006,"验证失败"),
+    UNKNOWN_ERROR(70001,"未知错误"),
+    HTTP_ERROR(80001,"HTTP相关错误"),
+    SERVICE_ERROR(90000,"服务端内部错误"),
+    REMOTE_DATA_PARSE_ERROR(90001,"远程数据解析错误"),
+    REMOTE_SERVICE_ERROR(90002,"远程服务错误");
 
 	private Integer code;
 	private String errorInfo;
