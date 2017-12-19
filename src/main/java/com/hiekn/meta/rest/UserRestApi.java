@@ -1,18 +1,20 @@
 package com.hiekn.meta.rest;
 
 import com.hiekn.meta.bean.UserBean;
-import com.hiekn.meta.bean.vo.BaseParam;
 import com.hiekn.meta.bean.result.RestResp;
+import com.hiekn.meta.bean.vo.BaseParam;
 import com.hiekn.meta.service.UserService;
 import com.hiekn.meta.util.JsonUtils;
-import io.swagger.annotations.*;
-import org.springframework.stereotype.Controller;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import javax.ws.rs.*;
 
 
-@Controller
+@RestController
 @Path("/user")
 @Api("用户模块")
 public class UserRestApi {
