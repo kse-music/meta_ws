@@ -31,8 +31,7 @@ public class ExceptionHandler implements ExceptionMapper<Exception> {
 	public Response toResponse(Exception exception) {
 		String t = request.getParameter("tt");
 		long tt = StringUtils.isBlank(t)?0L:Long.parseLong(t);
-		ErrorCode code = null;
-		RestResp<Integer> resp = null;
+		ErrorCode code = ErrorCode.SERVICE_ERROR;
 		Status statusCode = Status.OK;
 		if(exception instanceof BaseException){
 			code = ((BaseException) exception).getCode();
@@ -47,11 +46,9 @@ public class ExceptionHandler implements ExceptionMapper<Exception> {
 			}else if(exception instanceof InternalServerErrorException){
 				statusCode = Status.INTERNAL_SERVER_ERROR;
 			}
-		}else{
-			code = ErrorCode.SERVICE_ERROR;
 		}
 		String errMsg = code.toString();
-		resp = new RestResp<Integer>(code.getErrorCode(),errMsg,tt);
+        RestResp<Integer> resp = new RestResp<>(code.getErrorCode(),errMsg,tt);
 		log.error(errMsg, exception);  
 		return Response.ok(resp).status(statusCode).build();  
 	}
