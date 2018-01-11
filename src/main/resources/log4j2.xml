@@ -3,7 +3,7 @@
 
     <Properties>
         <!-- 配置日志文件输出目录 -->
-        <Property name="LOG_HOME">${sys:catalina.base}/project_logs/meta_ws</Property>
+        <Property name="LOG_HOME">${sys:catalina.home}/project_logs/meta_ws</Property>
         <!-- 配置日志文件名 -->
         <Property name="LOG_NAME">meta_ws_2.log</Property>
     </Properties>
