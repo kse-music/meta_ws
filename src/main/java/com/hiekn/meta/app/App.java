@@ -1,23 +1,21 @@
 package com.hiekn.meta.app;
 
-import javax.ws.rs.ApplicationPath;
-
-import org.codehaus.jackson.jaxrs.JacksonJsonProvider;
-import org.glassfish.jersey.media.multipart.MultiPartFeature;
-import org.glassfish.jersey.server.ResourceConfig;
-
 import com.hiekn.meta.conf.CommonResource;
-
 import io.swagger.jaxrs.config.BeanConfig;
 import io.swagger.jaxrs.listing.ApiListingResource;
 import io.swagger.jaxrs.listing.SwaggerSerializers;
+import org.glassfish.jersey.jackson.JacksonFeature;
+import org.glassfish.jersey.media.multipart.MultiPartFeature;
+import org.glassfish.jersey.server.ResourceConfig;
+
+import javax.ws.rs.ApplicationPath;
 
 @ApplicationPath("/api/*")
 public class App extends ResourceConfig{
 	
 	public App() {
 		packages(CommonResource.BASE_PACKAGE)
-		.register(JacksonJsonProvider.class)
+		.register(JacksonFeature.class)
 		.register(MultiPartFeature.class);
 
 		if(CommonResource.SWAGGER_INIT){
@@ -35,6 +33,6 @@ public class App extends ResourceConfig{
 		beanConfig.setHost(CommonResource.SWAGGER_HOST);
 		beanConfig.setBasePath(CommonResource.SWAGGER_BASE_PATH);
 		beanConfig.setResourcePackage(CommonResource.BASE_PACKAGE);
-		beanConfig.setScan(true);
+		beanConfig.setScan();
 	}
 }

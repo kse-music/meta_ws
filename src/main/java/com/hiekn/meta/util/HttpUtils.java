@@ -11,11 +11,11 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedHashMap;
 import javax.ws.rs.core.MultivaluedMap;
 
-import org.codehaus.jackson.jaxrs.JacksonJsonProvider;
 import org.glassfish.jersey.client.ClientConfig;
 import org.glassfish.jersey.client.ClientProperties;
 import org.glassfish.jersey.client.JerseyClient;
 import org.glassfish.jersey.client.JerseyClientBuilder;
+import org.glassfish.jersey.jackson.JacksonFeature;
 
 /**
  * httpClient依赖JerseyClient
@@ -32,7 +32,7 @@ public final class HttpUtils {
 		ClientConfig clientConfig = new ClientConfig();
 		clientConfig.property(ClientProperties.CONNECT_TIMEOUT, 600000)
 		.property(ClientProperties.READ_TIMEOUT, 600000)
-		.register(JacksonJsonProvider.class);
+		.register(JacksonFeature.class);
 		setHttpClient(clientConfig);
 	}
 	
