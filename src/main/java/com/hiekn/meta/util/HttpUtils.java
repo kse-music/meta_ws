@@ -1,21 +1,16 @@
 package com.hiekn.meta.util;
 
-import java.util.List;
-import java.util.Map.Entry;
-
-import javax.ws.rs.client.Entity;
-import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.Configuration;
-import javax.ws.rs.core.GenericType;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.MultivaluedHashMap;
-import javax.ws.rs.core.MultivaluedMap;
-
+import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
 import org.glassfish.jersey.client.ClientConfig;
 import org.glassfish.jersey.client.ClientProperties;
 import org.glassfish.jersey.client.JerseyClient;
 import org.glassfish.jersey.client.JerseyClientBuilder;
-import org.glassfish.jersey.jackson.JacksonFeature;
+
+import javax.ws.rs.client.Entity;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.*;
+import java.util.List;
+import java.util.Map.Entry;
 
 /**
  * httpClient依赖JerseyClient
@@ -32,7 +27,7 @@ public final class HttpUtils {
 		ClientConfig clientConfig = new ClientConfig();
 		clientConfig.property(ClientProperties.CONNECT_TIMEOUT, 600000)
 		.property(ClientProperties.READ_TIMEOUT, 600000)
-		.register(JacksonFeature.class);
+		.register(JacksonJsonProvider.class);
 		setHttpClient(clientConfig);
 	}
 	

@@ -1,10 +1,10 @@
 package com.hiekn.meta.app;
 
+import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
 import com.hiekn.meta.conf.CommonResource;
 import io.swagger.jaxrs.config.BeanConfig;
 import io.swagger.jaxrs.listing.ApiListingResource;
 import io.swagger.jaxrs.listing.SwaggerSerializers;
-import org.glassfish.jersey.jackson.JacksonFeature;
 import org.glassfish.jersey.media.multipart.MultiPartFeature;
 import org.glassfish.jersey.server.ResourceConfig;
 
@@ -15,7 +15,7 @@ public class App extends ResourceConfig{
 	
 	public App() {
 		packages(CommonResource.BASE_PACKAGE)
-		.register(JacksonFeature.class)
+		.register(JacksonJsonProvider.class)
 		.register(MultiPartFeature.class);
 
 		if(CommonResource.SWAGGER_INIT){
