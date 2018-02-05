@@ -1,6 +1,7 @@
 package com.hiekn.meta.rest;
 
 import com.hiekn.meta.bean.UserBean;
+import com.hiekn.meta.bean.result.RestData;
 import com.hiekn.meta.bean.result.RestResp;
 import com.hiekn.meta.bean.vo.BaseParam;
 import com.hiekn.meta.service.UserService;
@@ -25,10 +26,10 @@ public class UserRestApi {
     @POST
     @Path("/listByPage")
     @ApiOperation("分页用户列表")
-    public RestResp<UserBean> listByPage(@BeanParam BaseParam baseParam,
-                                         @ApiParam("当前页，默认1") @DefaultValue("1") @FormParam("pageNo") Integer pageNo,
-                                         @ApiParam("每页数，默认10") @DefaultValue("10") @FormParam("pageSize") Integer pageSize) {
-        return new RestResp<>(userService.listByPage(pageNo, pageSize), baseParam.getTt());
+    public RestResp<RestData<UserBean>> listByPage(@BeanParam BaseParam baseParam,
+                                                   @ApiParam("当前页，默认1") @DefaultValue("1") @FormParam("pageNo") Integer pageNo,
+                                                   @ApiParam("每页数，默认10") @DefaultValue("10") @FormParam("pageSize") Integer pageSize) {
+        return new RestResp<>(userService.listByPage(pageNo, pageSize));
     }
 
     @POST
@@ -38,7 +39,7 @@ public class UserRestApi {
                                     @ApiParam(value = "用户名/邮箱", required = true) @FormParam("username") String username,
                                     @ApiParam(value = "密码", required = true) @FormParam("password") String password) {
         UserBean userBean = userService.login(username, password);
-        return new RestResp<>(userBean, baseParam.getTt());
+        return new RestResp<>(userBean);
     }
 
     @GET
@@ -46,7 +47,7 @@ public class UserRestApi {
     @ApiOperation("用户详情")
     public RestResp<UserBean> get(@BeanParam BaseParam baseParam,
                                   @ApiParam(required = true) @QueryParam("id") Integer id) {
-        return new RestResp<>(userService.get(id), baseParam.getTt());
+        return new RestResp<>(userService.get(id));
     }
 
     @POST
@@ -55,7 +56,7 @@ public class UserRestApi {
     public RestResp<UserBean> add(@BeanParam BaseParam baseParam,
                                   @ApiParam(value = "bean对象", required = true) @FormParam("bean") String bean) {
         UserBean userBean = JsonUtils.fromJson(bean, UserBean.class);
-        return new RestResp<>(userBean, baseParam.getTt());
+        return new RestResp<>(userBean);
     }
 
     @POST
@@ -66,7 +67,7 @@ public class UserRestApi {
         UserBean userBean = JsonUtils.fromJson(bean, UserBean.class);
         userBean.setId(baseParam.getUserId());
         userService.modify(userBean);
-        return new RestResp<>(baseParam.getTt());
+        return new RestResp<>();
     }
 
     @POST
@@ -75,7 +76,7 @@ public class UserRestApi {
     public RestResp<UserBean> delete(@BeanParam BaseParam baseParam,
                                      @ApiParam(required = true) @QueryParam("id") Integer id) {
         userService.remove(id);
-        return new RestResp<>(baseParam.getTt());
+        return new RestResp<>();
     }
 
 

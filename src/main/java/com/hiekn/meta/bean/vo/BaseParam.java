@@ -12,9 +12,7 @@ public class BaseParam {
     @ApiParam("用户token")
     @QueryParam("token")
     private String token;
-    @ApiParam("请求时间戳")
-    @QueryParam("tt")
-    private Long tt;
+
 
     public Integer getUserId() {
         return userId;
@@ -32,11 +30,4 @@ public class BaseParam {
         this.token = token;
     }
 
-    public Long getTt() {
-        return tt;
-    }
-
-    public void setTt(Long tt) {
-        this.tt = tt;
-    }
 }

@@ -1,11 +1,9 @@
 package com.hiekn.meta.bean.result;
 
-import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
-import com.google.common.collect.Lists;
-
+import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class RestData<T> {
@@ -15,20 +13,12 @@ public class RestData<T> {
 	
 	public RestData() {}
 
-	public RestData(T data){
-		this(Lists.newArrayList(data));
-	}
-	
-	public RestData(List<T> rsData){
-		this.rsData = rsData;
-	}
-	
 	public RestData(List<T> rsData, Integer count){
 		this(rsData,Long.valueOf(count));
 	}
 	
 	public RestData(List<T> rsData, Long count){
-		this(rsData);
+		this.rsData = rsData;
 		this.rsCount = count;
 	}
 	
