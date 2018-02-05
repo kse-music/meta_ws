@@ -10,7 +10,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import com.hiekn.meta.bean.UserBean;
-import com.hiekn.meta.bean.result.ErrorCode;
+import com.hiekn.meta.bean.result.ErrorCodes;
 import com.hiekn.meta.bean.result.RestData;
 import com.hiekn.meta.dao.UserMapper;
 import com.hiekn.meta.exception.ServiceException;
@@ -28,7 +28,7 @@ public class UserServcieImpl implements UserService{
 	public UserBean login(String username, String password) {
 		UserBean userBean = getByUsername(username);
 		if(Objects.isNull(userBean)){
-			throw ServiceException.newInstance(ErrorCode.USER_NOT_FOUND_ERROR);
+			throw ServiceException.newInstance(ErrorCodes.USER_NOT_FOUND_ERROR);
 		}
 		return userBean;
 	}

@@ -12,11 +12,11 @@ import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 
+import com.hiekn.meta.bean.result.ErrorCodes;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.hiekn.meta.bean.result.ErrorCode;
 import com.hiekn.meta.bean.result.RestResp;
 
 @Provider
@@ -31,12 +31,12 @@ public class ExceptionHandler implements ExceptionMapper<Exception> {
 	public Response toResponse(Exception exception) {
 		String t = request.getParameter("tt");
 		long tt = StringUtils.isBlank(t)?0L:Long.parseLong(t);
-		ErrorCode code = ErrorCode.SERVICE_ERROR;
+		ErrorCodes code = ErrorCodes.SERVICE_ERROR;
 		Status statusCode = Status.OK;
 		if(exception instanceof BaseException){
 			code = ((BaseException) exception).getCode();
 		}else if(exception instanceof WebApplicationException){
-			code = ErrorCode.HTTP_ERROR;
+			code = ErrorCodes.HTTP_ERROR;
 			if(exception instanceof NotFoundException){
 				statusCode = Status.NOT_FOUND;
 			}else if(exception instanceof NotAllowedException){

@@ -4,21 +4,22 @@ package com.hiekn.meta.bean.result;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
-import org.codehaus.jackson.annotate.JsonProperty;
-import org.codehaus.jackson.map.annotate.JsonSerialize;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.collect.Lists;
 
 
-@JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class RestResp<T> {
 	
     public enum ActionStatusMethod {
         OK("OK"),
         FAIL("FAIL");
         private final String name;
-        private ActionStatusMethod(final String name) {
+        ActionStatusMethod(final String name) {
             this.name = name;
         }
         @Override
@@ -29,7 +30,7 @@ public class RestResp<T> {
 	
     @JsonProperty("ActionStatus")
 	private String ActionStatus = ActionStatusMethod.OK.toString();
-    @JsonProperty("ErrorCode")
+    @JsonProperty("ErrorCodes")
 	private Integer ErrorCode = 0;
     @JsonProperty("ErrorInfo")
 	private String ErrorInfo = "";
@@ -45,7 +46,7 @@ public class RestResp<T> {
 	public RestResp(Integer code,String msg,Long tt){
 		this.ActionStatus = ActionStatusMethod.FAIL.toString();
 		this.ErrorCode = code;
-		this.ErrorInfo = msg == null?com.hiekn.meta.bean.result.ErrorCode.fromErrorCode(code).toString():msg;
+		this.ErrorInfo = msg == null? ErrorCodes.fromErrorCode(code).toString():msg;
 		this.tt = tt;
 	}
 	

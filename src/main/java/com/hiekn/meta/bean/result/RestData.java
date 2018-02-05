@@ -2,11 +2,12 @@ package com.hiekn.meta.bean.result;
 
 import java.util.List;
 
-import org.codehaus.jackson.map.annotate.JsonSerialize;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 import com.google.common.collect.Lists;
 
-@JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class RestData<T> {
 
 	private List<T> rsData;

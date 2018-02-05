@@ -2,7 +2,7 @@ package com.hiekn.meta.bean.result;
 
 import java.util.Objects;
 
-public enum ErrorCode {
+public enum ErrorCodes {
 
     //3xxxx:通用错误码定义
     //5xxxx:业务相关错误码定义
@@ -27,7 +27,7 @@ public enum ErrorCode {
 	private Integer code;
 	private String errorInfo;
 
-	ErrorCode(Integer code,String errorInfo){
+	ErrorCodes(Integer code, String errorInfo){
 		this.code = code ;
 		this.errorInfo = errorInfo;
 	}
@@ -45,8 +45,8 @@ public enum ErrorCode {
 		return errorInfo;
 	}
 
-	public static ErrorCode fromErrorCode(Integer code){
-		for (ErrorCode error : ErrorCode.values()) {
+	public static ErrorCodes fromErrorCode(Integer code){
+		for (ErrorCodes error : ErrorCodes.values()) {
 			if (Objects.equals(code,error.getErrorCode())) {
 				return error;
 			}
